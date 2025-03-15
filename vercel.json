@@ -1,7 +1,0 @@
-{
-  "build": {
-    "env": {
-      "NEXT_SKIP_BUILD_STATIC_GENERATION": "true"
-    }
-  }
-}
