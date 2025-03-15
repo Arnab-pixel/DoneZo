@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #4a90e2;
+  --background-color: #121212;
+  --card-background: #1e1e1e;
+  --text-color: #e1e1e1;
+  --border-color: #333333;
+
+  --font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+}
