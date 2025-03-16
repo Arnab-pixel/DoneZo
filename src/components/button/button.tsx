@@ -2,27 +2,25 @@ import { buttonProps } from "@/types";
 import clsx from "clsx";
 
 const Button = ({
-  type,
+  type = "button",
   text,
   onClick,
-  actionButton,
   bgColor,
-  ...props
+  className,
 }: buttonProps) => {
   return (
-    <div>
-      <button
-        onClick={onClick}
-        type={type}
-        className={clsx(
-          actionButton &&
-            "text-white hover:bg-opacity-50 focus:ring-2 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none",
-          `${bgColor} hover:bg-opacity-50 font-medium rounded-lg text-white text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none`
-        )}
-      >
-        {text}
-      </button>
-    </div>
+    <button
+      onClick={onClick}
+      type={type}
+      className={clsx(
+        "rounded-lg px-5 py-2 text-white transition-all duration-300 focus:outline-none shadow-md",
+        "hover:opacity-80 hover:scale-105 active:scale-95",
+        bgColor,
+        className
+      )}
+    >
+      {text}
+    </button>
   );
 };
 

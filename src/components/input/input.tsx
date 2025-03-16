@@ -1,17 +1,16 @@
 import { inputProps } from "@/types";
 
-const input = ({ name, type, placeholder, value }: inputProps) => {
+const Input = ({ name, type, placeholder, value, className }: inputProps) => {
   return (
-    <div>
-      <input
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        className="block w-full p-4 mx-2 rounded-lg text-base bg-[var(--card-background)] border border-[var(--border-color)] placeholder-bg-[var(--text-color)] text-white focus:outline-none focus:border-blue-400"
-      />
-    </div>
+    <input
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      defaultValue={value}
+      className={`w-full px-4 py-2 rounded-lg border border-gray-600 bg-[var(--card-background)] text-white 
+      placeholder-gray-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-500 outline-none transition-all ${className}`}
+    />
   );
 };
 
-export default input;
+export default Input;

@@ -1,5 +1,4 @@
 "use client";
-
 import { formProps } from "@/types";
 import { useRef } from "react";
 
@@ -13,6 +12,7 @@ const Form = ({ children, action, className, onSubmit }: formProps) => {
       }}
       onSubmit={onSubmit}
       ref={ref}
+      className={className}
     >
       {children}
     </form>

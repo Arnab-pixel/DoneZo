@@ -7,14 +7,13 @@ import { FaCheck, FaUndo } from "react-icons/fa";
 
 const ChangeTodo = ({ todo }: { todo: todoProps }) => {
   return (
-    <Form action={actions.changeStatus}>
-      <Input name="inputId" value={todo.id} type="hidden"></Input>
+    <Form action={actions.changeStatus} className="flex">
+      <Input name="inputId" value={todo.id} type="hidden" />
       <Button
-        text={todo.isCompleted ? <FaUndo /> : <FaCheck />}
         type="submit"
-        actionButton
+        text={todo.isCompleted ? <FaUndo /> : <FaCheck />}
         bgColor={todo.isCompleted ? "bg-yellow-500" : "bg-green-500"}
-      ></Button>
+      />
     </Form>
   );
 };
