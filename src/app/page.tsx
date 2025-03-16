@@ -1,7 +1,6 @@
 "use server";
 import * as actions from "@/actions";
 import Button from "@/components/button/button";
-import Footer from "@/components/Footer";
 import Form from "@/components/form/form";
 import Input from "@/components/input/input";
 import Todo from "@/components/todos/Todo";
@@ -25,7 +24,7 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
   return (
-    <div className="w-screen min-h-screen flex flex-col items-center py-20 px-4">
+    <div className="w-full flex flex-col items-center py-20 px-4">
       <h1 className="text-5xl font-extrabold text-center mb-8 text-gray-200 tracking-wide">
         DoneZo
       </h1>
@@ -49,7 +48,6 @@ export default async function Home() {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
