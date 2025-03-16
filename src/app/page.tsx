@@ -1,6 +1,7 @@
 "use server";
 import * as actions from "@/actions";
 import Button from "@/components/button/button";
+import Footer from "@/components/Footer";
 import Form from "@/components/form/form";
 import Input from "@/components/input/input";
 import Todo from "@/components/todos/Todo";
@@ -48,6 +49,7 @@ export default async function Home() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
