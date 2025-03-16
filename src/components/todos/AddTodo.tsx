@@ -8,7 +8,7 @@ const AddTodo = () => {
     <div>
       <Form action={actions.createTodo}>
         <div className="flex gap-7 items-center justify-center">
-          <Input name="input" type="text" placeholder="Add to get Done..." />
+          <Input name="input" type="text" placeholder="Add to get it Done..." />
           <Button
             type="submit"
             text="Add"
