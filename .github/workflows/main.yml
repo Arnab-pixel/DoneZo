@@ -22,15 +22,6 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Run Linting
-        run: npm run lint
-
-      - name: Build Next.js App
-        run: npm run build
-        
       - name: Set up Environment Variables
         run: |
           echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
@@ -40,7 +31,15 @@ jobs:
           echo "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL }}" >> $GITHUB_ENV
 
+      - name: Install Dependencies
+        run: npm install
 
+      - name: Run Linting
+        run: npm run lint
+
+      - name: Build Next.js App
+        run: npm run build
+        
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -62,4 +61,12 @@ jobs:
       - name: Deploy to Vercel
         run: |
           npm install -g vercel
-          vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --prod \
+            --env DATABASE_URL=${{ secrets.DATABASE_URL }} \
+            --env NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }} \
+            --env CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }} \
+            --env NEXT_PUBLIC_CLERK_SIGN_IN_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_URL }} \
+            --env NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL }} \
+            --env NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=${{ secrets.NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL }} \
+            --env VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID }} \
+            --env VERCEL_ORG_ID=${{ secrets.VERCEL_ORG_ID }}
