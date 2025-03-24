@@ -5,9 +5,16 @@ import Form from "@/components/form/form";
 import Input from "@/components/input/input";
 import Todo from "@/components/todos/Todo";
 import { prisma } from "@/utils/prisma";
+import { currentUser } from "@clerk/nextjs/server";
 
 async function getData() {
+  const user = await currentUser();
+  if (!user) return [];
+
   const data = await prisma.todo.findMany({
+    where: {
+      userId: user.id,
+    },
     select: {
       title: true,
       id: true,
